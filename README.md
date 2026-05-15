@@ -79,58 +79,58 @@ This code creates a dynamic MongoDB filter for product prices based on query par
 The `seed.js` file is used to populate the MongoDB database with sample product data for testing and development. It connects to the database, removes any existing products using `deleteMany({})`, and then inserts the products from `products.js` using `insertMany()`. This makes it easy to reset the database to a clean state whenever needed. Running `npm run seed` quickly reloads all the test products into the database so the API can be tested consistently.
 4. Try all API routes using Postman
 ## GET /api/health
+<img src="./Images/get-health.png" width="900">
 
-<img src="./Images/Get api:health.png" width="900">
 
 
 ## GET /api/products
+<img src="./Images/get-products.png" width="900">
 
-<img src="./Images/Get api:products.png" width="900">
 
 
 ## GET /api/products?warehouse=A
+<img src="./Images/get-products-warehouse-a.png" width="900">
 
-<img src="./Images/Get api:products?warehouse=A.png" width="900">
 
 
 ## GET /api/products?minPrice=50&maxPrice=200
+<img src="./Images/get-products-price-filter.png" width="900">
 
-<img src="./Images/Get api:products?minPrice=50&maxPrice=200.png" width="900">
 
 
 ## GET /api/products?minQuantity=20&maxQuantity=100
+<img src="./Images/get-products-quantity-filter.png" width="900">
 
-<img src="./Images/Get api:products?minQuantity=20&maxQuantity=100.png" width="900">
 
 
 ## GET /api/products?name=laptop
+<img src="./Images/get-products-name-laptop.png" width="900">
 
-<img src="./Images/Get api:products?name=laptop.png" width="900">
 
 
 ## GET /api/products/:id
+<img src="./Images/get-product-by-id.png" width="900">
 
-<img src="./Images/Get api:products6a069b1e2e1dd1660148fb57.png" width="900">
 
 
 ## POST /api/products
+<img src="./Images/post-product.png" width="900">
 
-<img src="./Images/Post api:products.png" width="900">
 
 
 ## PUT /api/products/:id
+<img src="./Images/put-product.png" width="900">
 
-<img src="./Images/Put api:products6a06a315f6f97b09b2168f54.png" width="900">
 
 
 ## PATCH /api/products/:id
+<img src="./Images/patch-product.png" width="900">
 
-<img src="./Images/Patch api:products6a06a315f6f97b09b2168f54.png" width="900">
 
 
 ## DELETE /api/products/:id
+<img src="./Images/delete-product.png" width="900">
 
-<img src="./Images/Delete api:products6a069b1e2e1dd1660148fb57.png" width="900">
 
 
 5. In terms of code what is the difference between `put` and `patch`
