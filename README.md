@@ -76,6 +76,7 @@ if (query.minPrice || query.maxPrice) {
 ```
 This code creates a dynamic MongoDB filter for product prices based on query parameters from the URL. If the user provides a `minPrice` or `maxPrice`, the program creates a `price` filter object and uses MongoDB operators like `$gte` (greater than or equal to) and `$lte` (less than or equal to) to limit the results. For example, if the request is `/api/products?minPrice=50&maxPrice=200`, the API will only return products priced between 50 and 200. The `Number()` function converts the query string values into numbers before they are used in the database query.
 3. What is the program `seed.js` used for?
+
 The `seed.js` file is used to populate the MongoDB database with sample product data for testing and development. It connects to the database, removes any existing products using `deleteMany({})`, and then inserts the products from `products.js` using `insertMany()`. This makes it easy to reset the database to a clean state whenever needed. Running `npm run seed` quickly reloads all the test products into the database so the API can be tested consistently.
 4. Try all API routes using Postman
 ## GET /api/health
