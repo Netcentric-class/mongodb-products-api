@@ -65,6 +65,7 @@ curl "http://localhost:3000/api/products?maxQuantity=25"
 
 ## Questions
 1. What is the purpose of using `.env`
+The purpose of using a `.env` file is to store configuration values and environment variables separately from the main application code. In this project, the `.env` file stores the MongoDB connection string, database name, collection name, and port number. This makes the application more secure, easier to configure, and easier to move between different environments like development and production without changing the source code. Instead of hardcoding sensitive or changeable values directly into the application, the program reads them using `process.env`.
 2. How does this work:
 ```js
 if (query.minPrice || query.maxPrice) {
@@ -73,9 +74,67 @@ if (query.minPrice || query.maxPrice) {
     if (query.maxPrice) filter.price.$lte = Number(query.maxPrice);
 }
 ```
+This code creates a dynamic MongoDB filter for product prices based on query parameters from the URL. If the user provides a `minPrice` or `maxPrice`, the program creates a `price` filter object and uses MongoDB operators like `$gte` (greater than or equal to) and `$lte` (less than or equal to) to limit the results. For example, if the request is `/api/products?minPrice=50&maxPrice=200`, the API will only return products priced between 50 and 200. The `Number()` function converts the query string values into numbers before they are used in the database query.
 3. What is the program `seed.js` used for?
+The `seed.js` file is used to populate the MongoDB database with sample product data for testing and development. It connects to the database, removes any existing products using `deleteMany({})`, and then inserts the products from `products.js` using `insertMany()`. This makes it easy to reset the database to a clean state whenever needed. Running `npm run seed` quickly reloads all the test products into the database so the API can be tested consistently.
 4. Try all API routes using Postman
+## GET /api/health
+
+<img src="./Images/Get api:health.png" width="900">
+
+
+## GET /api/products
+
+<img src="./Images/Get api:products.png" width="900">
+
+
+## GET /api/products?warehouse=A
+
+<img src="./Images/Get api:products?warehouse=A.png" width="900">
+
+
+## GET /api/products?minPrice=50&maxPrice=200
+
+<img src="./Images/Get api:products?minPrice=50&maxPrice=200.png" width="900">
+
+
+## GET /api/products?minQuantity=20&maxQuantity=100
+
+<img src="./Images/Get api:products?minQuantity=20&maxQuantity=100.png" width="900">
+
+
+## GET /api/products?name=laptop
+
+<img src="./Images/Get api:products?name=laptop.png" width="900">
+
+
+## GET /api/products/:id
+
+<img src="./Images/Get api:products6a069b1e2e1dd1660148fb57.png" width="900">
+
+
+## POST /api/products
+
+<img src="./Images/Post api:products.png" width="900">
+
+
+## PUT /api/products/:id
+
+<img src="./Images/Put api:products6a06a315f6f97b09b2168f54.png" width="900">
+
+
+## PATCH /api/products/:id
+
+<img src="./Images/Patch api:products6a06a315f6f97b09b2168f54.png" width="900">
+
+
+## DELETE /api/products/:id
+
+<img src="./Images/Delete api:products6a069b1e2e1dd1660148fb57.png" width="900">
+
+
 5. In terms of code what is the difference between `put` and `patch`
+The difference between `PUT` and `PATCH` is that `PUT` replaces the entire object while `PATCH` only updates specific fields. In this project, the `PUT` route expects all product fields such as `name`, `price`, `quantity`, and `warehouse`, and it replaces the existing product data completely. The `PATCH` route is more flexible because it only updates the fields included in the request body. For example, `PATCH` can update only the product price without changing the other fields.
 
 ## Exercise
 Do a repo of your own to represent whatever you want as long as it has four fields (data members), make sure that your program has the "same" API routes and to provide test data. The README file should have screenshots of using all API routes, either by using Postman, or by modifying `index.html` to have all the operations. Also, add the answers to the questions on your README.
